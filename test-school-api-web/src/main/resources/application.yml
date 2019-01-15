@@ -1,7 +1,7 @@
 server:
   #Use port: 0 to use randomly generated port number  
   port: 8070
-  contextPath: /h/jamil/rest/v1/school/test
+  contextPath: /h/jamil/rest
 
 eureka:
   client:
