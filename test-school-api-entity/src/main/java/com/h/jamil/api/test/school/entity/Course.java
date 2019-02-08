@@ -8,7 +8,7 @@ import javax.persistence.*;
  * The persistent class for the COURSE database table.
  * 
  */
-@Entity
+@Entity(name = "COURSE")
 public class Course implements Serializable {
 	private static final long serialVersionUID = 1L;
 
