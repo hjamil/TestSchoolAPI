@@ -6,13 +6,19 @@ server:
 eureka:
   client:
     serviceUrl:
-      defaultZone: http://discovery:8761/eureka/
+      defaultZone: http://localhost:8761/eureka/
   instance:
     preferIpAddress: true
     leaseRenewalIntervalInSeconds: 5
     leaseExpirationDurationInSeconds: 8
     metadata-map:
       management.port: ${management.port:8081}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 some:
   thing:
@@ -21,8 +27,7 @@ some:
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
-    url: jdbc:mysql://mysql-dock:3306/SCHOOL_A?useUnicode=yes&characterEncoding=UTF-8
-#    url: jdbc:mysql://localhost:3306/SCHOOL_A?useUnicode=yes&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost:3306/SCHOOL_A?useUnicode=yes&characterEncoding=UTF-8
     username: SCHOOL_A
     password: SCHOOL_A
     tomcat:
