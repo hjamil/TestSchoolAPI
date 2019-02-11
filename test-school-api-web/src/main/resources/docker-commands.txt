@@ -1,2 +1,2 @@
-docker run --name=test-school-api --network=my-custom-net -d -p 8070:8070 c216fdeaa412
+docker run --name=test-school-api --network=my-custom-net -d -p 8070:8070 d4bc9a9feb61
 docker logs test-school-api
