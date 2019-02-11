@@ -15,6 +15,8 @@ public class Student {
 
     private String name;
 
+    private String something;
+
     public Student() {
     }
 
@@ -38,9 +40,20 @@ public class Student {
         this.name = name;
     }
 
-    public Student(Integer id, String name) {
+    @JsonProperty(value = "something", required = true)
+    @ApiModelProperty(position = 2, required = true, dataType = "String", example = "abcd", notes = "Something coming from the config.")
+    public String getSomething() {
+        return something;
+    }
+
+    public void setSomething(String something) {
+        this.something = something;
+    }
+
+    public Student(Integer id, String name, String something) {
         this.id = id;
         this.name = name;
+        this.something = something;
     }
 
     @Override
@@ -48,6 +61,7 @@ public class Student {
         return "Student{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", something='" + something + '\'' +
                 '}';
     }
 }

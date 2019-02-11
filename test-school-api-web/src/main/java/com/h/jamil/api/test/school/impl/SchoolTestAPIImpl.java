@@ -4,6 +4,7 @@ import com.google.common.collect.Lists;
 import com.h.jamil.api.test.school.domain.Student;
 import com.h.jamil.api.test.school.repository.StudentRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -12,6 +13,9 @@ import java.util.List;
 @Service
 public class SchoolTestAPIImpl {
 
+    @Value("${some.thing.value:xyz}")
+    private String somethingValue;
+
     @Autowired
     private StudentRepository studentRepository;
 
@@ -19,7 +23,7 @@ public class SchoolTestAPIImpl {
 
         com.h.jamil.api.test.school.entity.Student entityStudent = studentRepository.findOne(studentId);
 
-        Student student = new Student(entityStudent.getId(), entityStudent.getName());
+        Student student = new Student(entityStudent.getId(), entityStudent.getName(), somethingValue);
 
         return student;
     }
@@ -31,7 +35,7 @@ public class SchoolTestAPIImpl {
         List<Student> students = new ArrayList<>();
 
         for(com.h.jamil.api.test.school.entity.Student entityStudent : entityStudents) {
-            students.add(new Student(entityStudent.getId(), entityStudent.getName()));
+            students.add(new Student(entityStudent.getId(), entityStudent.getName(), somethingValue));
         }
 
         return students;

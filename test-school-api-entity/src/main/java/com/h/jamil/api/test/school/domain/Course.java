@@ -7,13 +7,15 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 @ApiModel(value = "Course", description = "Data model for Course")
-@JsonPropertyOrder({"id", "name"})
+@JsonPropertyOrder({"id", "name", "something"})
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public class Course {
 
     private Integer id;
 
     private String name;
+
+    private String something;
 
     public Course() {
     }
@@ -38,9 +40,20 @@ public class Course {
         this.name = name;
     }
 
-    public Course(Integer id, String name) {
+    @JsonProperty(value = "something", required = true)
+    @ApiModelProperty(position = 2, required = true, dataType = "String", example = "abcd", notes = "Something coming from the config.")
+    public String getSomething() {
+        return something;
+    }
+
+    public void setSomething(String something) {
+        this.something = something;
+    }
+
+    public Course(Integer id, String name, String something) {
         this.id = id;
         this.name = name;
+        this.something = something;
     }
 
     @Override
@@ -48,6 +61,7 @@ public class Course {
         return "Course{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
+                ", something='" + something + '\'' +
                 '}';
     }
 }

@@ -14,6 +14,10 @@ eureka:
     metadata-map:
       management.port: ${management.port:8081}
 
+some:
+  thing:
+    value: abcd
+
 spring:
   datasource:
     driverClassName: com.mysql.jdbc.Driver
