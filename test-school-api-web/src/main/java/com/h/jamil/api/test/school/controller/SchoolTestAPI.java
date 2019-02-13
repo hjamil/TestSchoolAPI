@@ -1,5 +1,7 @@
 package com.h.jamil.api.test.school.controller;
 
+import com.h.jamil.api.framework.utility.ELKLogger;
+import com.h.jamil.api.framework.utility.HostInfo;
 import com.h.jamil.api.test.school.domain.Student;
 import com.h.jamil.api.test.school.impl.SchoolTestAPIImpl;
 import io.swagger.annotations.*;
@@ -23,6 +25,8 @@ import java.util.List;
 @Api(tags = "School.Test", value = "/h/jamil/rest/v1/school/test", description = "HJamil School Test API")
 @RequestMapping(value = "/v1/school/test")
 public class SchoolTestAPI {
+    // Define Logback
+    private static final ELKLogger log = new ELKLogger(SchoolTestAPIImpl.class);
 
     @Autowired
     private SchoolTestAPIImpl controllerImpl;
@@ -49,6 +53,8 @@ public class SchoolTestAPI {
                        @PathVariable(value = "studentId") Integer studentId,
                        HttpServletRequest request) throws Exception {
 
+        log.info(HostInfo.getHostAddressForLog() + " " + request.getMethod() + " " + HostInfo.getFullURL(request) + " INITIATED...");
+
         return controllerImpl.getStudent(studentId);
     }
 
@@ -70,6 +76,8 @@ public class SchoolTestAPI {
     public
     @ResponseBody
     List<Student> getStudents(HttpServletRequest request) throws Exception {
+
+        log.info(HostInfo.getHostAddressForLog() + " " + request.getMethod() + " " + HostInfo.getFullURL(request) + " INITIATED...");
 
         return controllerImpl.getStudents();
     }
