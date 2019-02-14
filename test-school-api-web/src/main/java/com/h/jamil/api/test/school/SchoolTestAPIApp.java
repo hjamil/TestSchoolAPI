@@ -19,7 +19,7 @@ import org.springframework.scheduling.annotation.EnableAsync;
 @EnableDiscoveryClient
 @EnableCircuitBreaker
 @EnableJpaRepositories(basePackages = "com.h.jamil.api.test.school.repository")
-@ComponentScan(basePackages = "com.h.jamil.api.test.school")
+@ComponentScan(basePackages = {"com.h.jamil.api.test.school", "com.h.jamil.api.framework"})
 public class SchoolTestAPIApp {
 
     public static void main(String[] args) {

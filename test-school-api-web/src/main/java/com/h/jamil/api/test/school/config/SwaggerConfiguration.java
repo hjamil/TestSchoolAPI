@@ -31,11 +31,11 @@ public class SwaggerConfiguration {
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder()
                 .title("RESTful API")
-                .contact(new Contact("IBM Thailand Co.,Ltd.", "", "hassanj@th.ibm.com"))
-                .description("SRESTful API for Test project")
-                .termsOfServiceUrl("http://www-03.ibm.com/software/sla/sladb.nsf/sla/bm?Open")
+                .contact(new Contact("Hassan Jamil", "", "hasssanjamilz@gmail.com"))
+                .description("RESTful API for Test project")
+                .termsOfServiceUrl("somthing")
                 .license("Apache License Version 2.0")
-                .licenseUrl("https://github.com/IBM-Bluemix/news-aggregator/blob/master/LICENSE")
+                .licenseUrl("something")
                 .version("1.0 "+gitVersion.getVersionString())
                 .build();
     }
