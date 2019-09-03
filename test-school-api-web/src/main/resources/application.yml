@@ -45,4 +45,8 @@ spring:
         implicit-strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyLegacyJpaImpl
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
       ddl-auto: none
+    show-sql: true
 
+
+#logging:
+#  config: TestSchoolAPI/test-school-api-web/src/main/resources/logback-spring.xml

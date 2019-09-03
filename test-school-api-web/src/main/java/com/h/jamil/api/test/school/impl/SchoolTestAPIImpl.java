@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,9 +51,27 @@ public class SchoolTestAPIImpl {
         return students;
     }
 
+    public void delStudent(Integer studentId) {
+
+        log.info(this.getClass().getSimpleName() + " INITIATED...");
+
+        studentRepository.delete(studentId);
+
+        return;
+    }
+
+    @Transactional
+    public void delStudentByName(String name) {
+
+        log.info(this.getClass().getSimpleName() + " INITIATED...");
+
+        studentRepository.deleteByName(name);
+
+        return;
+    }
+
     public Student postStudent(Student student) {
         log.info(this.getClass().getSimpleName() + " INITIATED...");
-        log.info(student.getId()+"EEEEEEEEEEEE");
         studentEntity = new com.h.jamil.api.test.school.entity.Student();
         studentEntity.setId(student.getId());
         studentEntity.setName(student.getName());
