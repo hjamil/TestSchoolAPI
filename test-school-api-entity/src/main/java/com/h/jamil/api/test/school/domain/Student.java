@@ -40,8 +40,8 @@ public class Student {
         this.name = name;
     }
 
-    @JsonProperty(value = "something", required = true)
-    @ApiModelProperty(position = 2, required = true, dataType = "String", example = "abcd", notes = "Something coming from the config.")
+    @JsonProperty(value = "something", required = false)
+    @ApiModelProperty(position = 2, required = false, dataType = "String", example = "abcd", notes = "Something coming from the config.")
     public String getSomething() {
         return something;
     }

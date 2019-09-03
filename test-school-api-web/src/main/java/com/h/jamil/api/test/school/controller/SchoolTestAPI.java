@@ -81,4 +81,28 @@ public class SchoolTestAPI {
 
         return controllerImpl.getStudents();
     }
+
+    // POST: /v1/school/test/student
+
+    // Define information of this API for displaying on Swagger
+    @ApiOperation(value = "Post a student", nickname = "postStudents", notes = "This API is used to post a student.")
+    // Define information of HTTP response for this API for displaying on Swagger
+    @ApiResponses(value = {@ApiResponse(code = 201, message = "Success", response = Student.class),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 409, message = "Conflict"),
+            @ApiResponse(code = 500, message = "Internal server error occurred"),
+            @ApiResponse(code = 503, message = "Service Unavailable"),
+            @ApiResponse(code = 504, message = "Gateway Timeout")})
+    @RequestMapping(value = "/students", method = RequestMethod.POST, produces = "application/json")
+    public
+    @ResponseBody
+    Student postStudent(@RequestBody Student student, HttpServletRequest request) throws Exception {
+
+        log.info(HostInfo.getHostAddressForLog() + " " + request.getMethod() + " " + HostInfo.getFullURL(request) + " INITIATED...");
+
+        return controllerImpl.postStudent(student);
+    }
 }

@@ -16,6 +16,8 @@ public class SchoolTestAPIImpl {
     // Define Logback
     private static final ELKLogger log = new ELKLogger(SchoolTestAPIImpl.class);
 
+    private com.h.jamil.api.test.school.entity.Student studentEntity;
+
     @Value("${some.thing.value:xyz}")
     private String somethingValue;
 
@@ -46,5 +48,16 @@ public class SchoolTestAPIImpl {
         }
 
         return students;
+    }
+
+    public Student postStudent(Student student) {
+        log.info(this.getClass().getSimpleName() + " INITIATED...");
+        log.info(student.getId()+"EEEEEEEEEEEE");
+        studentEntity = new com.h.jamil.api.test.school.entity.Student();
+        studentEntity.setId(student.getId());
+        studentEntity.setName(student.getName());
+        studentRepository.save(studentEntity);
+
+        return getStudent(student.getId());
     }
 }
