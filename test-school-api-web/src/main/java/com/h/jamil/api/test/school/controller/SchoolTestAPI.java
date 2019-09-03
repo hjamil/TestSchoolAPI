@@ -137,4 +137,32 @@ public class SchoolTestAPI {
         controllerImpl.delStudentByName(name);
         return;
     }
+
+    // GET: /v1/school/test/student/{name}
+
+    // Define information of this API for displaying on Swagger
+    @ApiOperation(value = "GET student by name", nickname = "getStudentByName", notes = "This API is used to GET student by name.")
+    // Define information of HTTP response for this API for displaying on Swagger
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success", response = Student.class),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 409, message = "Conflict"),
+            @ApiResponse(code = 500, message = "Internal server error occurred"),
+            @ApiResponse(code = 503, message = "Service Unavailable"),
+            @ApiResponse(code = 504, message = "Gateway Timeout")})
+    @RequestMapping(value = "/studentByName/{name}", method = RequestMethod.GET, produces = "application/json")
+    public
+    @ResponseBody
+    List<Student> getStudentByName(@NotBlank
+                    @ApiParam(name = "name", value = "Name of the Student", required = true)
+                    @PathVariable(value = "name") String name,
+                                   HttpServletRequest request) throws Exception {
+
+        log.info(HostInfo.getHostAddressForLog() + " " + request.getMethod() + " " + HostInfo.getFullURL(request) + " INITIATED...");
+
+
+        return controllerImpl.getStudentByName(name);
+    }
 }

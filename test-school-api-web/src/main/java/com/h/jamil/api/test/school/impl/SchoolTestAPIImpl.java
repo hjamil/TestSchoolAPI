@@ -33,6 +33,20 @@ public class SchoolTestAPIImpl {
 
         return student;
     }
+    public List<Student> getStudentByName(String name) {
+
+        log.info(this.getClass().getSimpleName() + " INITIATED...");
+
+        List<com.h.jamil.api.test.school.entity.Student> entityStudents = Lists.newArrayList(studentRepository.findByName(name));
+
+        List<Student> students = new ArrayList<>();
+
+        for(com.h.jamil.api.test.school.entity.Student entityStudent : entityStudents) {
+            students.add(new Student(entityStudent.getId(), entityStudent.getName(), somethingValue));
+        }
+
+        return students;
+    }
 
     public List<Student> getStudents() {
 
