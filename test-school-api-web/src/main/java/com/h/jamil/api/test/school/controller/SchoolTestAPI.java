@@ -81,4 +81,60 @@ public class SchoolTestAPI {
 
         return controllerImpl.getStudents();
     }
+
+    // DELETE: /v1/school/test/student/{studentId}
+
+    // Define information of this API for displaying on Swagger
+    @ApiOperation(value = "Delete student", nickname = "delStudent", notes = "This API is used to Delete student.")
+    // Define information of HTTP response for this API for displaying on Swagger
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success", response = Student.class),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 409, message = "Conflict"),
+            @ApiResponse(code = 500, message = "Internal server error occurred"),
+            @ApiResponse(code = 503, message = "Service Unavailable"),
+            @ApiResponse(code = 504, message = "Gateway Timeout")})
+    @RequestMapping(value = "/student/{studentId}", method = RequestMethod.DELETE, produces = "application/json")
+    public
+    @ResponseBody
+    void delStudent(@NotBlank
+                    @ApiParam(name = "studentId", value = "Id of the Student", required = true)
+                    @PathVariable(value = "studentId") Integer studentId,
+                    HttpServletRequest request) throws Exception {
+
+        log.info(HostInfo.getHostAddressForLog() + " " + request.getMethod() + " " + HostInfo.getFullURL(request) + " INITIATED...");
+
+        controllerImpl.delStudent(studentId);
+        return;
+    }
+
+    // DELETE: /v1/school/test/student/{name}
+
+    // Define information of this API for displaying on Swagger
+    @ApiOperation(value = "Delete student by name", nickname = "delStudentByName", notes = "This API is used to Delete student by name.")
+    // Define information of HTTP response for this API for displaying on Swagger
+    @ApiResponses(value = {@ApiResponse(code = 200, message = "Success", response = Student.class),
+            @ApiResponse(code = 400, message = "Bad Request"),
+            @ApiResponse(code = 401, message = "Unauthorized"),
+            @ApiResponse(code = 403, message = "Forbidden"),
+            @ApiResponse(code = 404, message = "Not Found"),
+            @ApiResponse(code = 409, message = "Conflict"),
+            @ApiResponse(code = 500, message = "Internal server error occurred"),
+            @ApiResponse(code = 503, message = "Service Unavailable"),
+            @ApiResponse(code = 504, message = "Gateway Timeout")})
+    @RequestMapping(value = "/studentByName/{name}", method = RequestMethod.DELETE, produces = "application/json")
+    public
+    @ResponseBody
+    void delStudent(@NotBlank
+                    @ApiParam(name = "name", value = "Name of the Student", required = true)
+                    @PathVariable(value = "name") String name,
+                    HttpServletRequest request) throws Exception {
+
+        log.info(HostInfo.getHostAddressForLog() + " " + request.getMethod() + " " + HostInfo.getFullURL(request) + " INITIATED...");
+
+        controllerImpl.delStudentByName(name);
+        return;
+    }
 }
