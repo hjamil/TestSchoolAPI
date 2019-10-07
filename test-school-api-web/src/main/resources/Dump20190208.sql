@@ -48,10 +48,9 @@ UNLOCK TABLES;
 DROP TABLE IF EXISTS `STUDENT`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
-CREATE TABLE `STOCK` (
+CREATE TABLE `STUDENT` (
   `ID` int(11) NOT NULL,
   `Name` varchar(45) NOT NULL,
-  `Price` varchar(45) NOT NULL,
   PRIMARY KEY (`ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -62,7 +61,7 @@ CREATE TABLE `STOCK` (
 
 LOCK TABLES `STUDENT` WRITE;
 /*!40000 ALTER TABLE `STUDENT` DISABLE KEYS */;
-INSERT INTO `STOCK` VALUES (1,'BTS','13.6'),(2,'PTTGC','52.0');
+INSERT INTO `COURSE` VALUES (1,'Student 1'),(2,'Student 2');
 /*!40000 ALTER TABLE `STUDENT` ENABLE KEYS */;
 UNLOCK TABLES;
 
